@@ -1,0 +1,35 @@
+source ~/.vimrc
+
+set surround
+set multiple-cursors
+set commentary
+set highlightedyank
+
+nmap <leader>f :action Find<CR>
+nmap <leader>r :action Replace<CR>
+
+nmap <leader>F :action FindInPath<CR>
+nmap <leader>R :action ReplaceInPath<CR>
+
+nmap <leader>s :action SearchEverywhere<CR>
+
+nmap <leader>d :action GotoDeclaration<CR>
+nmap <leader>u :action FindUsages<CR>
+nmap <leader>e :action RecentFiles<CR>
+nmap <Leader>o :action ShowSettings<CR>
+
+nmap <leader>z :action ReformatCode<CR>
+nmap <leader>c :action CommentByLineComment<CR>
+nmap <leader>v :action RefactoringMenu<CR>
+
+nmap <leader>p :action ActivateProjectToolWindow<CR>
+nmap <leader>t :action ActivateTerminalToolWindow<CR>
+nmap <leader>g :action Git.Menu<CR>
+
+nmap <leader>bb :action Run<CR>
+nmap <leader>bc :action RunClass<CR>
+nmap <leader>dd :action Debug<CR>
+nmap <leader>dc :action DebugClass<CR>
+
+nmap <leader>x :action CloseActiveTab<CR>
+nmap <leader>q :action CloseActiveTab<CR>
