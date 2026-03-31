@@ -17,12 +17,12 @@
     "keybindings": 
     [
         {
-            "id": "Terminal.CopyToClipboard",
-            "keys": "ctrl+c"
-        },
-        {
             "id": "Terminal.OpenNewTab",
             "keys": "ctrl+t"
+        },
+        {
+            "id": "Terminal.CopyToClipboard",
+            "keys": "ctrl+c"
         },
         {
             "id": "Terminal.PasteFromClipboard",
@@ -33,16 +33,16 @@
             "keys": "alt+h"
         },
         {
-            "id": "Terminal.MoveFocusRight",
-            "keys": "alt+l"
+            "id": "Terminal.MoveFocusUp",
+            "keys": "alt+k"
         },
         {
             "id": "Terminal.ClosePane",
             "keys": "alt+q"
         },
         {
-            "id": "Terminal.MoveFocusUp",
-            "keys": "alt+k"
+            "id": "Terminal.MoveFocusRight",
+            "keys": "alt+l"
         },
         {
             "id": "Terminal.MoveFocusDown",
@@ -76,7 +76,7 @@
             "elevate": true,
             "font": 
             {
-                "face": "Cascadia Code",
+                "face": "JetBrains Mono",
                 "size": 12
             },
             "opacity": 85,
@@ -92,14 +92,17 @@
                 "source": "Windows.Terminal.PowershellCore"
             },
             {
-                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "name": "Command Prompt"
-            },
-            {
                 "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
                 "hidden": false,
                 "name": "Ubuntu",
                 "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
+            },
+            {
+                "commandline": "C:\\Program Files\\Git\\bin\\bash.exe --login -i",
+                "guid": "{2ece5b4d-3d6d-47a2-b5f0-5c0a3734479e}",
+                "hidden": false,
+                "icon": "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
+                "name": "Git Bash"
             }
         ]
     },
