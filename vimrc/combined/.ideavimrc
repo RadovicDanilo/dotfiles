@@ -1,0 +1,84 @@
+let mapleader = ","
+set clipboard=unnamedplus
+set number relativenumber
+set ignorecase smartcase
+set hlsearch incsearch
+set scrolloff=10
+set timeoutlen=500
+set cursorline      
+set showmatch       
+
+" Tab & Indent
+set expandtab smarttab
+set shiftwidth=4 tabstop=4
+set autoindent smartindent
+
+" --- The 'All' Macros ---
+nnoremap <leader>a :%y+<CR>
+nnoremap <leader>p ggVGp
+
+" --- Navigation (Centered) ---
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzz
+nnoremap N Nzz
+
+" --- Better Home/End ---
+noremap H ^
+noremap L $
+
+" --- Line Movement (Alt+j / Alt+k) ---
+nnoremap <M-j> :m+<CR>==
+nnoremap <M-k> :m-2<CR>==
+vnoremap <M-j> :m '>+1<CR>gv=gv
+vnoremap <M-k> :m '<-2<CR>gv=gv
+
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
+
+nnoremap <leader>l :bnext<CR>
+nnoremap <leader>h :bprevious<CR>
+nnoremap <space> :noh<CR>
+
+nnoremap <leader>w :w!<CR>
+
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe 
+autocmd BufWritePre * silent! %s/\s\+$//e
+
+" --- IDEA VIM ---
+
+set surround
+set multiple-cursors
+set commentary
+set highlightedyank
+
+nmap <leader>f :action Find<CR>
+nmap <leader>r :action Replace<CR>
+
+nmap <leader>F :action FindInPath<CR>
+nmap <leader>R :action ReplaceInPath<CR>
+
+nmap <leader>s :action SearchEverywhere<CR>
+
+nmap <leader>d :action GotoDeclaration<CR>
+nmap <leader>u :action FindUsages<CR>
+nmap <leader>e :action RecentFiles<CR>
+nmap <Leader>o :action ShowSettings<CR>
+
+nmap <leader>z :action ReformatCode<CR>
+nmap <leader>c :action CommentByLineComment<CR>
+nmap <leader>v :action RefactoringMenu<CR>
+
+nmap <leader>p :action ActivateProjectToolWindow<CR>
+nmap <leader>t :action ActivateTerminalToolWindow<CR>
+nmap <leader>g :action Git.Menu<CR>
+
+nmap <leader>bb :action Run<CR>
+nmap <leader>bc :action RunClass<CR>
+nmap <leader>dd :action Debug<CR>
+nmap <leader>dc :action DebugClass<CR>
+
+nmap <leader>x :action CloseActiveTab<CR>
+nmap <leader>q :action CloseActiveTab<CR>
