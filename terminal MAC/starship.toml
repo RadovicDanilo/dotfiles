@@ -1,0 +1,94 @@
+# ==========================================================================
+# 1. CORE LAYOUT & STRUCTURE
+# ==========================================================================
+add_newline = true
+scan_timeout = 10
+
+# Left side layout: Keeps path, git, language runtimes, cloud infrastructure, and execution duration clean.
+format = """
+$directory\
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$aws\
+$kubernetes\
+$docker_context\
+$cmd_duration\
+$line_break\
+$character"""
+
+# ==========================================================================
+# 2. PATH & DIRECTORY DISPLAY (Legible & Crisp)
+# ==========================================================================
+[directory]
+format = "📂 [$path]($style) "
+style = "bold fg:#fabd2f" # High-contrast Gruvbox Golden-Yellow
+truncation_length = 3
+truncate_to_repo = true
+home_symbol = "~"
+
+# ==========================================================================
+# 3. GIT VERSION CONTROL
+# ==========================================================================
+[git_branch]
+symbol = " "
+format = "on [$symbol$branch]($style) "
+style = "bold fg:#fe8019" # Bright Gruvbox Orange
+
+[git_status]
+format = "([$all_status$ahead_behind]($style) )"
+style = "bold fg:#fb4934" # Bright Gruvbox Red
+conflicted = "="
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+untracked = "?"
+modified = "!"
+staged = "+"
+renamed = "»"
+deleted = "✘"
+
+# ==========================================================================
+# 4. RUNTIME ENVS (Displays ONLY when working in relevant codebase)
+# ==========================================================================
+[python]
+symbol = "🐍 "
+format = "via [$symbol($version)]($style) "
+style = "bold fg:#b8bb26" # Vibrant Gruvbox Green
+
+[nodejs]
+symbol = " "
+format = "via [$symbol($version)]($style) "
+style = "bold fg:#83a598" # Clear Pastel Blue
+
+# ==========================================================================
+# 5. CLOUD & DEVOPS CONTEXT (Crucial for Cloud Engineering)
+# ==========================================================================
+[aws]
+symbol = "☁️  "
+format = "on [$symbol($profile)]($style) "
+style = "bold fg:#fe8019" # Orange (Matches standard AWS branding color)
+
+[kubernetes]
+symbol = "☸️  "
+format = "in [$symbol($context)]($style) "
+style = "bold fg:#8ec07c" # Aqua Green (Legible cluster context helper)
+disabled = false
+
+[docker_context]
+symbol = "🐳 "
+format = "via [$symbol($context)]($style) "
+style = "bold fg:#458588"
+
+# ==========================================================================
+# 6. TIMING & INTERACTIVE CHARACTER INDICATORS
+# ==========================================================================
+[cmd_duration]
+min_time = 2000
+format = "took [⏱ $duration](bold fg:#fabd2f) "
+
+[character]
+success_symbol = "[➜](bold fg:#b8bb26) " # Green arrow on successful command
+error_symbol = "[➜](bold fg:#fb4934) "   # Red arrow if command returned an error
+vicmd_symbol = "[VIM Mode](bold fg:#fe8019) " # Clear orange banner when ESC is tapped!
