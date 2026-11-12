@@ -23,11 +23,22 @@ setopt SHARE_HISTORY
 setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
+
+# Do not clutter history with commands that only end the shell.
+zshaddhistory() {
+  local command_line="${1%%$'\n'}"
+  command_line="${command_line##[[:space:]]#}"
+  case "$command_line" in
+    exit|q) return 1 ;;
+  esac
+  return 0
+}
 
 # ==========================================================================
 # 3. ALIASES (Cloud Dev & Keyboard-Centric Quick-Keys)
@@ -35,6 +46,7 @@ setopt HIST_VERIFY
 # System Shortcuts
 alias c='clear'
 alias v='nvim'
+alias q='exit'
 
 # Python & Tool Shortcuts
 alias python="python3"
@@ -112,6 +124,7 @@ fi
 
 # Activate Fuzzy Finder Interactivity (Press Ctrl+R to try it!) [source: 5]
 # Run `brew install fzf` if this doesn't run [source: 2, 5]
+export FZF_CTRL_R_OPTS='--height=40% --layout=reverse --border=rounded --prompt="history > "'
 if [ -f ~/.fzf.zsh ]; then
   source ~/.fzf.zsh
 elif command -v fzf >/dev/null 2>&1; then

@@ -8,6 +8,7 @@ config.color_scheme = 'Gruvbox dark, soft (base16)'
 config.font = wezterm.font 'FiraCode Nerd Font'
 config.font_size = 14.0
 config.line_height = 1.1
+config.default_prog = { '/bin/zsh', '-l' }
 config.default_cursor_style = 'BlinkingBar'
 config.cursor_blink_rate = 800
 
@@ -58,6 +59,18 @@ config.colors = {
 -- ==========================================================================
 config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
+  -- Quick terminal workflow. The unused function-key gap is reserved for Rectangle.
+  { key = 'F13', action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
+  { key = 'F14', action = wezterm.action.SpawnWindow },
+  { key = 'F15', action = wezterm.action.CloseCurrentTab { confirm = true } },
+  { key = 'F16', action = wezterm.action.ActivateTabRelative(-1) },
+  { key = 'F18', action = wezterm.action.ActivateTabRelative(1) },
+  { key = 'F19', action = wezterm.action.SplitPane { direction = 'Right', size = { Percent = 50 } } },
+  { key = 'F20', action = wezterm.action.SplitPane { direction = 'Down', size = { Percent = 50 } } },
+  { key = 'F21', action = wezterm.action.TogglePaneZoomState },
+  { key = 'F22', action = wezterm.action.ReloadConfiguration },
+  { key = 'F23', action = wezterm.action.ActivateCopyMode },
+
   -- Split windows vertically (side-by-side)
   { 
     mods = 'LEADER', 
@@ -76,6 +89,10 @@ config.keys = {
     key = 'x', 
     action = wezterm.action.CloseCurrentPane { confirm = true } 
   },
+  { mods = 'LEADER', key = 't', action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
+  { mods = 'LEADER', key = 'n', action = wezterm.action.SpawnWindow },
+  { mods = 'LEADER', key = 'z', action = wezterm.action.TogglePaneZoomState },
+  { mods = 'LEADER', key = 'r', action = wezterm.action.ReloadConfiguration },
 
   -- Navigation: Move cursor focus across panels with Option/Alt + Home-Row
   { mods = 'ALT', key = 'h', action = wezterm.action.ActivatePaneDirection 'Left' },
@@ -83,8 +100,6 @@ config.keys = {
   { mods = 'ALT', key = 'j', action = wezterm.action.ActivatePaneDirection 'Down' },
   { mods = 'ALT', key = 'k', action = wezterm.action.ActivatePaneDirection 'Up' },
 
-  -- Vim Copy Mode Scrollback Trigger (Ctrl + Shift + X)
-  { mods = 'CTRL|SHIFT', key = 'X', action = wezterm.action.ActivateCopyMode },
 }
 
 return config

@@ -1,13 +1,75 @@
 [
   {
     "key": "ctrl+d",
-    "command": "vscode-neovim.ctrl-d",
-    "when": "editorTextFocus && neovim.mode != insert"
+    "command": "vscode-neovim.send",
+    "args": {
+      "cmd": "<C-d>"
+    },
+    "when": "editorTextFocus && neovim.mode == normal"
   },
   {
     "key": "ctrl+u",
-    "command": "vscode-neovim.ctrl-u",
-    "when": "editorTextFocus && neovim.mode != insert"
+    "command": "vscode-neovim.send",
+    "args": {
+      "cmd": "<C-u>"
+    },
+    "when": "editorTextFocus && neovim.mode == normal"
+  },
+  {
+    "key": "f13",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "f14",
+    "command": "workbench.action.terminal.new"
+  },
+  {
+    "key": "f15",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "f16",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "f18",
+    "command": "workbench.action.terminal.focusPreviousPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "f19",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "f20",
+    "command": "workbench.action.terminal.clear",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+alt+i",
+    "command": "workbench.action.chat.open"
+  },
+  {
+    "key": "ctrl+alt+n",
+    "command": "workbench.action.chat.newChat"
+  },
+  {
+    "key": "ctrl+alt+w",
+    "command": "workbench.action.chat.close",
+    "when": "chatIsOpen"
+  },
+  {
+    "key": "shift+alt+f",
+    "command": "editor.action.formatDocument",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+alt+o",
+    "command": "editor.action.organizeImports",
+    "when": "editorTextFocus && !editorReadonly"
   },
   {
     "key": "ctrl+c",

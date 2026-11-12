@@ -78,22 +78,6 @@ require("lazy").setup({
     opts = { options = { theme = "gruvbox-material" } } 
   },
 
-  -- [NAVIGATION] High-Contrast horizontal jump highlighting (f/F/t/T navigation)
-  {
-    "unblevable/quick-scope",
-    lazy = false,
-    init = function()
-      vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
-      vim.g.qs_max_chars = 0
-      vim.g.qs_lazy_highlight = 0
-    end,
-    config = function()
-      -- Vibrant golden primary landing target and blue alternative target with underlines
-      vim.api.nvim_set_hl(0, "QuickScopePrimary", { fg = "#fabd2f", underline = true, bold = true })
-      vim.api.nvim_set_hl(0, "QuickScopeSecondary", { fg = "#83a598", underline = true, bold = true })
-    end,
-  },
-
   -- [NAVIGATION] Harpoon: Mark and switch files instantly via home-row keys
   {
     "ThePrimeagen/harpoon",
