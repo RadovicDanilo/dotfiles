@@ -1,12 +1,8 @@
--- ==========================================================================
--- 1. CORE SETTINGS (Split Keyboard & High Contrast/Aniridia Friendly)
--- ==========================================================================
 vim.g.mapleader = " " -- Set SPACE as your Leader (Your primary thumb key)
 vim.g.maplocalleader = "\\"
 
 local opt = vim.opt
 
--- Visual Navigation & Eye Comfort Options
 opt.number = true          -- Show line numbers
 opt.relativenumber = true  -- Relative line numbers (makes jump calculations like '5j' easy)
 opt.signcolumn = "yes"     -- Keep gutters reserved for Git indicators (prevents text jumping)
@@ -15,17 +11,14 @@ opt.cursorcolumn = true    -- VERTICAL CROSSHAIR: Lights up your current column 
 opt.colorcolumn = "80"     -- Subtle vertical guideline showing where the 80-character limit falls
 opt.scrolloff = 8          -- Keep cursor centered with 8 lines of padding above and below when scrolling
 
--- Screen Splitting Rules
 opt.splitbelow = true      -- New horizontal splits open below the current panel
 opt.splitright = true      -- New vertical splits open to the right of the current panel
 
--- Text Indentation, Tabs, and Spaces
 opt.expandtab = true       -- Convert tabs to spaces
 opt.shiftwidth = 2         -- 2 spaces indentation
 opt.tabstop = 2            -- 2 spaces tab display
 opt.completeopt = { "menu", "menuone", "noselect" }
 
--- Performance & Integration Settings
 opt.termguicolors = true   -- Enable true color (necessary for deep, high-contrast themes)
 opt.ignorecase = true      -- Ignore case during searches...
 opt.smartcase = true       -- ...unless a capital letter is typed in the search query
@@ -34,6 +27,15 @@ opt.mouse = "a"            -- Mouse support enabled in case you need it occasion
 opt.undofile = true        -- Persistent Undo tracking (edits can be undone even after closing Neovim)
 opt.updatetime = 250       -- Quicker save response and update times
 opt.timeoutlen = 400       -- Fast keyboard action/chord sequence timeout
+
+-- Keep diagnostics visible without filling every line with inline text.
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  severity_sort = true,
+  float = { border = "rounded", source = "if_many" },
+})
 
 -- ==========================================================================
 -- 2. BOOTSTRAP LAZY.NVIM (Plugin Manager)
@@ -82,7 +84,8 @@ require("lazy").setup({
     lazy = false,
     init = function()
       vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
-      vim.g.qs_max_chars = 80
+      vim.g.qs_max_chars = 0
+      vim.g.qs_lazy_highlight = 0
     end,
     config = function()
       -- Vibrant golden primary landing target and blue alternative target with underlines
@@ -132,7 +135,7 @@ require("lazy").setup({
     event = "VeryLazy",
     opts = {},
     keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash Jump" },
+      { "<leader>s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash Jump" },
     },
   },
 
@@ -188,7 +191,6 @@ require("lazy").setup({
           python = { "isort", "black" }, -- Sorts imports, then runs Black formatter
           javascript = { "prettierd", "prettier", stop_after_first = true },
           typescript = { "prettierd", "prettier", stop_after_first = true },
-          markdown = { "prettier" },
           yaml = { "prettier" },
         },
         format_on_save = {
@@ -273,6 +275,7 @@ map("n", "<leader>e", "<cmd>Oil<CR>", { desc = "Oil File Manager" })
 
 -- Unified System Clipboard Operations
 map("x", "<C-c>", '"+y', { desc = "Copy Selection" })
+map("i", "<C-v>", '<C-r>+', { desc = "Paste from system clipboard" })
 
 -- Fast Copy Entire File (Leader + y)
 map("n", "<leader>y", 'ggVG"+y', { desc = "Copy Entire File to Clipboard" })
@@ -295,6 +298,11 @@ map("n", "<A-k>", "<C-w>k", { desc = "Move to Top Window Split" })
 
 -- Clear Search Highlights with Escape
 map("n", "<Esc>", ":nohlsearch<CR>", { silent = true })
+
+-- Diagnostic navigation and a focused diagnostic window.
+map("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
+map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+map("n", "<leader>dd", vim.diagnostic.open_float, { desc = "Show diagnostics" })
 
 -- Ergonomic Home-Row Escape Trigger: Tap 'jk' simultaneously in insert mode
 map("i", "jk", "<Esc>", { silent = true })

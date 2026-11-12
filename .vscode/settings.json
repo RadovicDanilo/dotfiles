@@ -1,0 +1,56 @@
+{
+  "http.noProxy": [
+    "http://rb-proxy-de.bosch.com:8080"
+  ],
+  "window.newWindowProfile": "Default",
+  "extensions.ignoreRecommendations": false,
+  "keyboard.dispatch": "keyCode",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "vscode-neovim.neovimExecutablePaths.linux": "nvim",
+  "vscode-neovim.neovimExecutablePaths.osx": "nvim",
+  "vscode-neovim.neovimExecutablePaths.windows": "nvim.exe",
+  "vscode-neovim.ctrlKeysForNormalMode": ["<C-d>", "<C-u>", "<C-v>"],
+  "vscode-neovim.ctrlKeysForInsertMode": [],
+  "editor.formatOnSave": false,
+  "editor.formatOnType": false,
+  "editor.codeActionsOnSave": {},
+  "editor.minimap.enabled": false,
+  "editor.smoothScrolling": true,
+  "editor.cursorBlinking": "phase",
+  "editor.renderWhitespace": "selection",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.confirmOnExit": "never",
+  "terminal.integrated.scrollback": 50000,
+  "terminal.integrated.tabs.enabled": true,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.suggest.enabled": true,
+  "terminal.integrated.copyOnSelection": false,
+  "terminal.integrated.rightClickBehavior": "copyPaste",
+  "editor.accessibilitySupport": "off",
+  "github.copilot.nextEditSuggestions.enabled": false,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "github.copilot.nextEditSuggestions.eagerness": "low",
+  "git.enableSmartCommit": true,
+  "chat.viewSessions.orientation": "stacked",
+  "[markdown]": {
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 100,
+    "editor.defaultFormatter": null
+  },
+  "markdown.extension.toc.updateOnSave": false,
+  "markdownlint.config": {
+    "MD013": false
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "asvetliakov.vscode-neovim",
+    "ms-python.python",
+    "redhat.vscode-yaml",
+    "hashicorp.terraform",
+    "googlecloudtools.cloudcode",
+    "DavidAnson.vscode-markdownlint",
+    "github.copilot",
+    "github.copilot-chat",
+    "ms-vscode.powershell",
+    "ms-vscode-remote.remote-ssh",
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github"
+  ]
+}

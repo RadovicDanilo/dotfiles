@@ -10,7 +10,7 @@ Before changing a configuration, inspect the relevant symlink or resolved path w
 
 - `nvim/`: Neovim configuration.
 - `vimrc/`: Vim configuration.
-- `terminal MAC/`: macOS terminal configuration, including WezTerm and Starship.
+- `terminal MAC/`: macOS terminal configuration, including WezTerm, Starship, and the zsh startup file.
 - `terminal WIN/`: Windows terminal configuration.
 - `ps/`: PowerShell profile configuration.
 - `vial/`: Vial keyboard backup files.

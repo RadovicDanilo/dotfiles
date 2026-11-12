@@ -1,0 +1,30 @@
+[
+  {
+    "key": "ctrl+d",
+    "command": "vscode-neovim.ctrl-d",
+    "when": "editorTextFocus && neovim.mode != insert"
+  },
+  {
+    "key": "ctrl+u",
+    "command": "vscode-neovim.ctrl-u",
+    "when": "editorTextFocus && neovim.mode != insert"
+  },
+  {
+    "key": "ctrl+c",
+    "command": "editor.action.clipboardCopyAction",
+    "when": "editorTextFocus && neovim.mode == insert"
+  },
+  {
+    "key": "ctrl+v",
+    "command": "editor.action.clipboardPasteAction",
+    "when": "editorTextFocus && neovim.mode == insert"
+  },
+  {
+    "key": "ctrl+v",
+    "command": "vscode-neovim.send",
+    "args": {
+      "cmd": "<C-v>"
+    },
+    "when": "editorTextFocus && neovim.mode == normal"
+  }
+]
