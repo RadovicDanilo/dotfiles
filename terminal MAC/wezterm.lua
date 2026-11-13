@@ -61,12 +61,12 @@ config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
   -- Quick terminal workflow. The unused function-key gap is reserved for Rectangle.
   { key = 'F13', action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
-  { key = 'F14', action = wezterm.action.SpawnWindow },
-  { key = 'F15', action = wezterm.action.CloseCurrentTab { confirm = true } },
-  { key = 'F16', action = wezterm.action.ActivateTabRelative(-1) },
-  { key = 'F18', action = wezterm.action.ActivateTabRelative(1) },
-  { key = 'F19', action = wezterm.action.SplitPane { direction = 'Right', size = { Percent = 50 } } },
-  { key = 'F20', action = wezterm.action.SplitPane { direction = 'Down', size = { Percent = 50 } } },
+  { key = 'F14', action = wezterm.action.CloseCurrentTab { confirm = true } },
+  { key = 'F15', action = wezterm.action.SplitPane { direction = 'Right', size = { Percent = 50 } } },
+  { key = 'F16', action = wezterm.action.SplitPane { direction = 'Down', size = { Percent = 50 } } },
+  { key = 'F18', action = wezterm.action.ActivateTabRelative(-1) },
+  { key = 'F19', action = wezterm.action.ActivateTabRelative(1) },
+  { key = 'F20', action = wezterm.action.SpawnWindow },
   { key = 'F21', action = wezterm.action.TogglePaneZoomState },
   { key = 'F22', action = wezterm.action.ReloadConfiguration },
   { key = 'F23', action = wezterm.action.ActivateCopyMode },

@@ -2,17 +2,13 @@
   {
     "key": "ctrl+d",
     "command": "vscode-neovim.send",
-    "args": {
-      "cmd": "<C-d>"
-    },
+    "args": "<C-d>",
     "when": "editorTextFocus && neovim.mode == normal"
   },
   {
     "key": "ctrl+u",
     "command": "vscode-neovim.send",
-    "args": {
-      "cmd": "<C-u>"
-    },
+    "args": "<C-u>",
     "when": "editorTextFocus && neovim.mode == normal"
   },
   {
@@ -21,7 +17,7 @@
   },
   {
     "key": "f14",
-    "command": "workbench.action.terminal.new"
+    "command": "workbench.action.terminal.openNativeConsole"
   },
   {
     "key": "f15",
@@ -57,18 +53,13 @@
     "command": "workbench.action.chat.newChat"
   },
   {
-    "key": "ctrl+alt+w",
+    "key": "ctrl+alt+o",
     "command": "workbench.action.chat.close",
     "when": "chatIsOpen"
   },
   {
-    "key": "shift+alt+f",
+    "key": "ctrl+alt+l",
     "command": "editor.action.formatDocument",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "shift+alt+o",
-    "command": "editor.action.organizeImports",
     "when": "editorTextFocus && !editorReadonly"
   },
   {

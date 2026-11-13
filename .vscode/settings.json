@@ -9,7 +9,9 @@
   "vscode-neovim.neovimExecutablePaths.osx": "nvim",
   "vscode-neovim.neovimExecutablePaths.windows": "nvim.exe",
   "vscode-neovim.ctrlKeysForNormalMode": [
-    "<C-v>"
+    "<C-v>",
+    "<C-d>",
+    "<C-u>"
   ],
   "vscode-neovim.ctrlKeysForInsertMode": [],
   "editor.formatOnSave": true,
@@ -22,6 +24,7 @@
   "files.trimFinalNewlines": true,
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.external.osxExec": "WezTerm.app",
   "terminal.integrated.confirmOnExit": "never",
   "terminal.integrated.scrollback": 50000,
   "terminal.integrated.enableMultiLinePasteWarning": false,
@@ -44,5 +47,6 @@
   "markdown.extension.toc.updateOnSave": false,
   "markdownlint.config": {
     "MD013": false
-  }
+  },
+  "extensions.ignoreRecommendations": true
 }
