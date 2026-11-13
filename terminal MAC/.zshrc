@@ -5,8 +5,9 @@
 
 # Docker Desktop command completions
 fpath=(/Users/rad7bg/.docker/completions $fpath)
-autoload -Uz compinit
-(( ${+_comps[docker]} )) || compinit
+if [[ -r /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]]; then
+  source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+fi
 
 # Python Path Configurations
 export CLOUDSDK_PYTHON="/opt/homebrew/opt/python@3.12/bin/python3.12"
@@ -116,8 +117,6 @@ export PIP_DEFAULT_TIMEOUT=100
 # Autocomplete suggestions and code syntax highlighting
 if (( $+commands[brew] )); then
   brew_prefix="$(brew --prefix)"
-  [[ -r "$brew_prefix/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && \
-    source "$brew_prefix/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
   [[ -r "$brew_prefix/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && \
     source "$brew_prefix/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
@@ -145,46 +144,23 @@ export KEYTIMEOUT=1             # Keeps jk mode switching responsive
 # Map jk to escape Zsh command insert mode.
 bindkey -M viins 'jk' vi-cmd-mode
 
-# Search history using the text already typed, including partial words such as
-# "git c". Up and Down cycle through matching commands in every vi keymap.
-typeset -a _history_matches
-typeset _history_search_query=''
-typeset _history_search_index=0
+# Keep editing keys predictable in Vi insert mode.
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^H' backward-delete-char
+bindkey -M viins '^[[3~' delete-char
 
-_history_substring_search() {
-  local direction="$1"
-  local history_line
-
-  if [[ -z "$_history_search_query" || "$BUFFER" != "${_history_matches[_history_search_index]}" ]]; then
-    _history_search_query="$BUFFER"
-    _history_search_index=0
-    _history_matches=()
-    [[ -z "$_history_search_query" ]] && { zle "$direction"; return; }
-    while IFS= read -r history_line; do
-      [[ "$history_line" == *"$_history_search_query"* ]] && _history_matches+=("$history_line")
-    done < <(fc -ln -r 1)
-  fi
-
-  (( ${#_history_matches} == 0 )) && return
-  if [[ "$direction" == 'up-line-or-history' ]]; then
-    (( _history_search_index++ ))
-    (( _history_search_index > ${#_history_matches} )) && _history_search_index=${#_history_matches}
+# Change the cursor so Insert and command modes are visually distinct.
+_set_vi_cursor() {
+  if [[ "$KEYMAP" == vicmd ]]; then
+    print -n '\e[2 q'
   else
-    (( _history_search_index-- ))
-    (( _history_search_index < 1 )) && _history_search_index=1
+    print -n '\e[6 q'
   fi
-  BUFFER="${_history_matches[_history_search_index]}"
-  CURSOR=${#BUFFER}
 }
-
-_history_substring_search_up() { _history_substring_search up-line-or-history }
-_history_substring_search_down() { _history_substring_search down-line-or-history }
-zle -N _history_substring_search_up
-zle -N _history_substring_search_down
-for keymap in emacs viins vicmd; do
-  bindkey -M "$keymap" '^[[A' _history_substring_search_up
-  bindkey -M "$keymap" '^[[B' _history_substring_search_down
-done
+zle-keymap-select() { _set_vi_cursor }
+zle-line-init() { _set_vi_cursor }
+zle -N zle-keymap-select
+zle -N zle-line-init
 
 # ==========================================================================
 # 6. EXTERNAL TOOLS INITIALIZATION (Zero Duplicates)
